@@ -4,9 +4,9 @@ const Choices = require('inquirer/lib/objects/choices');
 const employee = require('./lib/Employee.js');
 const engineer = require('./lib/Engineer.js');
 const intern = require('./lib/Intern.js');
-const manager = require('./lib/Manager.js');
+const Manager = require('./lib/Manager.js');
 const genTeam = require('./src/page-template.js');
-const peeps = {};
+const peeps = [];
 
 const questions = [
     'What is the name of the team manager?',
@@ -56,8 +56,9 @@ function init() {
 ])
    .then((answers) => {
         var {name, id, address, officenumber, addition} = answers;
-        manager = new Manager (name, id, address, officenumber);
+        const leader = Manager(name, id, address, officenumber);
         peeps.push(leader);
+        
         var fileName = 'Team Contacts';
         // var data = answers;
         genTeam(data);
