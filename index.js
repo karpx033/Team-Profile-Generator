@@ -62,13 +62,13 @@ function init() {
             getIntern();
         } if (answers.addition==="Engineer") {
             getEngineer();
-        }
+        } else {
         var fileName = 'Team Contacts';
-        // var data = answers;
+        var data = peeps;
         genTeam(data);
         var data = genTeam(data);
         writeToFile(fileName, data);
-       
+        }
     })
     .catch(err => {
         console.log(err);
