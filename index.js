@@ -10,7 +10,7 @@ const peeps = [];
 
 const questions = [
     'What is the name of the team manager?',
-    'What is their emplyee ID?',
+    'What is their employee ID?',
     'What is their email address?',
     'What is their office number?',
     'Would you like to add an engineer or intern, or are you finished?'
@@ -56,9 +56,13 @@ function init() {
 ])
    .then((answers) => {
         var {name, id, address, officenumber, addition} = answers;
-        const leader = Manager(name, id, address, officenumber);
+        const leader = new Manager(name, id, address, officenumber);
         peeps.push(leader);
-        
+        if (answers.addition==="Intern") {
+            getIntern();
+        } if (answers.addition==="Engineer") {
+            getEngineer();
+        }
         var fileName = 'Team Contacts';
         // var data = answers;
         genTeam(data);
